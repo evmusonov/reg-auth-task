@@ -1,0 +1,8 @@
+1. Составить запрос, который выведет список email'лов встречающихся более чем у одного пользователя
+select email, count(*) from users group by email HAVING COUNT(*) > 1
+
+2. Вывести список логинов пользователей, которые не сделали ни одного заказа
+select login from users left join orders on users.id = orders.user_id where orders.id is null
+
+3. Вывести список логинов пользователей которые сделали более двух заказов
+select login, count(*) from users left join orders on users.id = orders.user_id group by users.login having count(*) > 2
